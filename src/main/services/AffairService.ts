@@ -40,15 +40,15 @@ export class AffairService {
         console.log(`%C Affair created:`, "background: blue; color: white; font-weight: bold", insertedAffair)
 
         // Fetch the fully populated Affair including its relations
-        return this.repository.findOne({
-            where: { affairId: insertedAffair.affairId },
+        return  this.repository.findOne({
+            where: {affairId: insertedAffair.affairId},
             relations: ["sectorialJointAgreement"]
         }) as Promise<Affair>
     }
 
     // Update an existing Affair by its ID
     async updateAffair(id: number, affairData: Partial<Affair>): Promise<Affair | undefined | null> {
-        const { actualMonthSalaries, ...updateData } = affairData;  // Separate related entities from other data
+        const { title, ...updateData } = affairData;  // Separate related entities from other data
         await this.repository.update(id, updateData);
         return this.getAffairById(id);  // Return the updated Affair with relations
     }

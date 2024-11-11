@@ -52,8 +52,8 @@ const AffairList: React.FC = () => {
                         <Th>{labels.affairNumber}</Th>
                         <Th>{labels.affairTitle}</Th>
                         <Th>{labels.claimant}</Th>
-                        <Th>{labels.startDateOfWork}</Th>
-                        <Th>{labels.endDateOfWork}</Th>
+                        <Th>{labels.affairTitle}</Th>
+                        <Th>{labels.affairTitle}</Th>
                         <Th>{labels.action}</Th>
                     </Tr>
                 </Thead>

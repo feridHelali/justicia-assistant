@@ -8,7 +8,7 @@ import { createAffair, fetchAffairById, switchToUpdateMode, switchToCreateMode, 
 import { useNavigate, useParams } from 'react-router-dom';
 import AlfaSpinner from '../../shared/AlfaSpinner';
 import GenericLookupDialog, { Entity } from '../../shared/GenericLookupDialog';
-import { fetchAgreements } from '../../redux/sectorialJointAgreement/sectorialJointAgreementSlice';
+
 
 interface affairState {
     affairId?: number;
@@ -17,8 +17,8 @@ interface affairState {
     claimant: string;
     startDateOfWork: string;
     endDateOfWork: string;
-    professionalCategoryAtBegining: string;
-    professionalDegreeAtBegining: string | number;
+    professionalCategoryAtBeginning: string;
+    professionalDegreeAtBeginning: string | number;
     sectorialJointAgreement: { sectorialJointAgreementId: string, name: string };
     mode: 'create' | 'update';
 }
@@ -30,8 +30,8 @@ const initialAffair: affairState = {
     claimant: '',
     startDateOfWork: '',
     endDateOfWork: '',
-    professionalCategoryAtBegining: '',
-    professionalDegreeAtBegining: '',
+    professionalCategoryAtBeginning: '',
+    professionalDegreeAtBeginning: '',
     sectorialJointAgreement: { sectorialJointAgreementId: '', name: '' },
     mode: 'create',
 };
@@ -59,11 +59,11 @@ const AffairForm: React.FC = () => {
         }
     }, [affairId, dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchAgreements()).then((agreements) => {
-            setAgreementsForLookup(mapAgreementsToEntity(agreements["payload"]));
-        })
-    }, []);
+    // useEffect(() => {
+    //     dispatch(fetchAgreements()).then((agreements) => {
+    //         setAgreementsForLookup(mapAgreementsToEntity(agreements["payload"]));
+    //     })
+    // }, []);
 
 
 
@@ -101,8 +101,8 @@ const AffairForm: React.FC = () => {
             claimant: newAffair.claimant,
             startDateOfWork: newAffair.startDateOfWork,
             endDateOfWork: newAffair.endDateOfWork,
-            professionalCategoryAtBegining: newAffair.professionalCategoryAtBegining,
-            professionalDegreeAtBegining: newAffair.professionalDegreeAtBegining,
+            professionalCategoryAtBegining: newAffair.professionalCategoryAtBeginning,
+            professionalDegreeAtBegining: newAffair.professionalDegreeAtBeginning,
             agreement: newAffair.sectorialJointAgreement.sectorialJointAgreementId
         }
 
@@ -122,8 +122,8 @@ const AffairForm: React.FC = () => {
                 claimant: newAffair.claimant,
                 startDateOfWork: newAffair.startDateOfWork,
                 endDateOfWork: newAffair.endDateOfWork,
-                professionalCategoryAtBegining: newAffair.professionalCategoryAtBegining,
-                professionalDegreeAtBegining: newAffair.professionalDegreeAtBegining,
+                professionalCategoryAtBegining: newAffair.professionalCategoryAtBeginning,
+                professionalDegreeAtBegining: newAffair.professionalDegreeAtBeginning,
                 agreement: newAffair.sectorialJointAgreement.sectorialJointAgreementId,
             };
             dispatch(updateAffair(updatedAffairDTO))
@@ -166,17 +166,17 @@ const AffairForm: React.FC = () => {
                     />
                 </FormControl>
                 <FormControl>
-                    <FormLabel>{labels.sectorialJointAgreementId}</FormLabel>
+                    <FormLabel>{labels.affair}</FormLabel>
                     <HStack>
                         <Input
                             type="text"
                             value={newAffair.sectorialJointAgreement.name}
-                            placeholder={labels.sectorialJointAgreementId}
+                            placeholder={labels.affair}
                             readOnly
                         />
                         <Button onClick={() => {
                             setIsLookupOpen(true)
-                        }}>{labels.selectAgreement}</Button>
+                        }}>{labels.affair}</Button>
                     </HStack>
                 </FormControl>
                 {/* Lookup Dialog */}
@@ -185,47 +185,47 @@ const AffairForm: React.FC = () => {
                     onClose={() => setIsLookupOpen(false)}
                     entities={agreementsForLookup}
                     onSelect={handleAgreementSelect}
-                    title={labels.selectAgreement}
+                    title={labels.affairTitle}
                 />
                 <FormControl>
-                    <FormLabel>{labels.startDateOfWork}</FormLabel>
+                    <FormLabel>{labels.affairTitle}</FormLabel>
                     <Input
                         type="date"
                         value={newAffair.startDateOfWork}
                         onChange={(e) => setNewAffair((prev) => ({ ...prev, startDateOfWork: e.target.value }))}
                         required
-                        placeholder={labels.startDateOfWork}
+                        placeholder={labels.affairTitle}
                     />
                 </FormControl>
                 <FormControl>
-                    <FormLabel>{labels.endDateOfWork}</FormLabel>
+                    <FormLabel>{labels.affairTitle}</FormLabel>
                     <Input
                         type="date"
                         value={newAffair.endDateOfWork}
                         onChange={(e) => setNewAffair((prev) => ({ ...prev, endDateOfWork: e.target.value }))}
                         required
-                        placeholder={labels.endDateOfWork}
+                        placeholder={labels.affairTitle}
                     />
                 </FormControl>
                 <FormControl>
-                    <FormLabel>{labels.professionalCategoryAtBegining}</FormLabel>
+                    <FormLabel>{labels.affairTitle}</FormLabel>
                     <Input
 
-                        value={newAffair.professionalCategoryAtBegining}
-                        onChange={(e) => setNewAffair((prev) => ({ ...prev, professionalCategoryAtBegining: e.target.value }))}
+                        value={newAffair.professionalCategoryAtBeginning}
+                        onChange={(e) => setNewAffair((prev) => ({ ...prev, professionalCategoryAtBeginning: e.target.value }))}
                         required
-                        placeholder={labels.professionalCategoryAtBegining}
+                        placeholder={labels.affairTitle}
                     />
                 </FormControl>
 
                 <FormControl>
-                    <FormLabel>{labels.professionalDegreeAtBegining}</FormLabel>
+                    <FormLabel>{labels.affairTitle}</FormLabel>
                     <Input
                         type="number"
-                        value={newAffair.professionalDegreeAtBegining}
-                        onChange={(e) => setNewAffair((prev) => ({ ...prev, professionalDegreeAtBegining: e.target.value }))}
+                        value={newAffair.professionalDegreeAtBeginning}
+                        onChange={(e) => setNewAffair((prev) => ({ ...prev, professionalDegreeAtBeginning: e.target.value }))}
                         required
-                        placeholder={labels.professionalDegreeAtBegining}
+                        placeholder={labels.affairTitle}
                     />
                 </FormControl>
 
@@ -250,10 +250,10 @@ function isAffairValid(_affair: affairState): boolean {
         _affair.sectorialJointAgreement.sectorialJointAgreementId.trim() &&
         _affair.startDateOfWork.trim() &&
         _affair.endDateOfWork.trim() &&
-        _affair.professionalCategoryAtBegining.trim() &&
-        (typeof (_affair.professionalDegreeAtBegining) === 'number' ||
-            typeof (_affair.professionalDegreeAtBegining) === "string"
-            && _affair.professionalDegreeAtBegining.trim())
+        _affair.professionalCategoryAtBeginning.trim() &&
+        (typeof (_affair.professionalDegreeAtBeginning) === 'number' ||
+            typeof (_affair.professionalDegreeAtBeginning) === "string"
+            && _affair.professionalDegreeAtBeginning.trim())
     );
 }
 function mapAgreementsToEntity(agreements: any) {

@@ -18,20 +18,6 @@ const SideNav: React.FC = () => {
                     <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.addAffair}
                 </Link>
                 <hr/>
-                <Link as={RouterLink} to="/agreements" display={"flex"} alignItems={"flex-start"}>
-                    <FaFileContract style={{ marginLeft: '10px' }} />{labels.sectorialJointAgreement}
-                </Link>
-                <Link as={RouterLink} to="/agreement-form" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.addSectorialJointAgreement}
-                </Link>
-                <hr/>
-
-                <Link as={RouterLink} to="/salary-tables" display={"flex"} alignItems={"flex-start"}>
-                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.salaryTableList}
-                </Link>
-                <Link as={RouterLink} to="/salary-table-form" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.addSalaryTable}
-                </Link>
 
             </VStack>
         </Box>

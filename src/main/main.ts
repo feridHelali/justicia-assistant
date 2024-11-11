@@ -3,9 +3,7 @@ import path from 'path';
 import { app, BrowserWindow, Menu, MenuItemConstructorOptions, ipcMain } from 'electron';
 import initializeDatabase from './db/initializeDatabase';
 
-import { SalaryTableService } from './services/SalaryTableService';
 import installExtension, { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
-import { SectorialJointAgreementService } from './services/SectorialJointAgreementService';
 import { AffairService } from './services/AffairService';
 
 
@@ -51,57 +49,11 @@ app.on('ready', async () => {
     try {
         await initializeDatabase();
 
-        const agreementService = new SectorialJointAgreementService();
-        const salaryTableService = new SalaryTableService();
         const affairService = new AffairService();
 
 
         // Register IPC handlers only after the data source is initialized
-        ipcMain.handle('fetch-agreements', async () => {
-            return await agreementService.getAllSectorialJointAgreements();
-        });
 
-        ipcMain.handle('fetch-agreement-by-id', async (event, id) => {
-            return await agreementService.getSectorialJointAgreementById(id);
-        });
-
-        ipcMain.handle('create-agreement', async (event, agreement) => {
-            return await agreementService.createSectorialJointAgreement(agreement);
-        });
-
-        ipcMain.handle('update-agreement', async (event, agreement) => {
-            return await agreementService.updateSectorialJointAgreement(agreement.sectorialJointAgreementId, agreement);
-        });
-
-        ipcMain.handle('delete-agreement', async (event, id) => {
-            await agreementService.deleteSectorialJointAgreement(id);
-            return id;
-        });
-
-        ipcMain.handle('fetch-all-salary-tables', async () => {
-            return await salaryTableService.findAll();
-        });
-
-        ipcMain.handle('fetch-salary-table-by-id', async (event, id) => {
-            return await salaryTableService.findById(id);
-        });
-
-        ipcMain.handle('fetch-salary-tables-by-agreement-id', async (event, agreementId) => {
-            return await salaryTableService.getSalaryTablesByAgreementId(agreementId);
-        });
-
-        ipcMain.handle('create-salary-table', async (event, salaryTable) => {
-            return await salaryTableService.create(salaryTable);
-        });
-
-        ipcMain.handle('update-salary-table', async (event, salaryTable) => {
-            return await salaryTableService.update(salaryTable.salaryTableId, salaryTable);
-        });
-
-        ipcMain.handle('delete-salary-table', async (event, id) => {
-            await salaryTableService.delete(id);
-            return id;
-        });
 
 
         ipcMain.handle('fetch-affairs', async () => {
