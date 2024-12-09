@@ -10,24 +10,23 @@ export class AffairService {
         this.repository = AppDataSource.getRepository(Affair);
     }
 
-    // Get all Affairs with optional ordering and relations to ActualMonthSalary
+   
     async getAllAffairs(): Promise<Affair[]> {
         return this.repository.find({
             order: {
                 affairId: 'ASC',  // Adjust the ordering field as needed
             },
             relations: [
-                'actualMonthSalaries',
-                'agreement'
+                
             ],
         });
     }
 
-    // Get a single Affair by its ID, including relations to ActualMonthSalary and agreement
+   
     async getAffairById(id: number): Promise<Affair | undefined | null> {
         const affair = await this.repository.findOne({
             where: { affairId: id },
-            relations: ["actualMonthSalaries", "agreement"]
+            relations: []
         })
         console.log('Fetched affair:', affair); // Add logging to check fetched dat
         return affair;
@@ -42,7 +41,7 @@ export class AffairService {
         // Fetch the fully populated Affair including its relations
         return  this.repository.findOne({
             where: {affairId: insertedAffair.affairId},
-            relations: ["sectorialJointAgreement"]
+            relations: []
         }) as Promise<Affair>
     }
 

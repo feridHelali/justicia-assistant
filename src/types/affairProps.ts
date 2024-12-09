@@ -3,8 +3,4 @@ export interface affairProps {
     affairNumber: number | string;
     title: string;
     claimant: string;
-    startDateOfWork: string;
-    endDateOfWork: string | null;
-    professionalCategoryAtBegining: string;
-    professionalDegreeAtBegining: number;
 }

@@ -1,3 +1,4 @@
+
 # File Structure (Chat GPT)
 
 root
