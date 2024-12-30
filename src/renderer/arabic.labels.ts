@@ -1,5 +1,3 @@
-import { lookup } from "dns";
-import { Affair } from "../main/db/entities/Affair";
 
 
 export const labels = {

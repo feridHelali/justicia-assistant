@@ -1,47 +1,44 @@
 // src\main\db\entities\Affair.ts
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Procedure } from "./Procedure";
+import { Schedule } from "./Schedule";
 
 @Entity("Affair")
 export class Affair {
     @PrimaryGeneratedColumn({ type: "integer", name: "affairID" })
     affairId!: number;
 
-    @Column({ type: "text", name: "affairNumber", nullable: false })
-    affairNumber!: string;
+    @Column({ type: 'varchar', length: 255 })
+    court!: string; // المحكمة
 
-    @Column("text", { name: "title", nullable: false })
-    title!: string;
+    @Column({ type: 'varchar', length: 255 })
+    case!: string; // قضية
 
-    @Column("text", { name: "claimant", nullable: false })
-    claimant!: string;
+    @Column({ type: 'varchar', length: 255 })
+    article!: string; // المادّة
 
-    @Column("date", { name: "startDateOfWork", nullable: false })
-    startDateOfWork!: string;
+    @Column({ type: 'varchar', length: 255 })
+    caseStage!: string; // طور القضية
 
-    @Column("date", { name: "endDateOfWork", nullable: false })
-    endDateOfWork!: string;
+    @Column({ type: 'varchar', length: 50 })
+    caseNumber!: string; // عدد القضية
 
-    @Column("text", { name: "professionalCategoryAtBegining" })
-    professionalCategoryAtBegining!: string;
+    @Column({ type: 'int' })
+    year!: number; // السنة
 
-    @Column("integer", { name: "professionalDegreeAtBegining" })
-    professionalDegreeAtBegining!: number;
+    @Column({ type: 'text' })
+    subject!: string; // الموضوع
 
-    // @ManyToOne(
-    //     () => SectorialJointAgreement,
-    //     (sectorialJointAgreement) => sectorialJointAgreement.affairs,
-    //     { onDelete: 'CASCADE'}
-    // )
-    // @JoinColumn([
-    //     { name: "agreementID" },
-    // ])
-    // agreement!: SectorialJointAgreement;
-    //
-    //
-    //
-    // @OneToMany(
-    //     () => ActualMonthSalary,
-    //     (actualMonthSalary) => actualMonthSalary.affair
-    // )
-    // actualMonthSalaries!: ActualMonthSalary[];
+    @Column({ type: 'text', nullable: true })
+    notes?: string; // الملاحظات
+
+    @Column({ type: 'text', nullable: true })
+    decision?: string; // القرار
+
+    @OneToMany(() => Procedure, (procedure) => procedure.affair, { cascade: true })
+    procedures!: Procedure[]; // A case can have multiple procedures
+
+    @OneToMany(() => Schedule, (schedule) => schedule.affair, { cascade: true })
+    schedules?: Schedule[]; // A case can have multiple schedules
 }
+

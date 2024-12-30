@@ -1,13 +1,15 @@
 import { DataSource } from 'typeorm';
 import { join } from 'path';
 import { Affair } from './db/entities/Affair';
+import { Procedure } from './db/entities/Procedure';
+import { Schedule } from './db/entities/Schedule';
 
 const databasePath = join(__dirname, '..', 'justiciaDb.sqlite');
 
 const AppDataSource = new DataSource({
     type: 'better-sqlite3',
     database: databasePath,
-    entities: [ Affair],
+    entities: [ Affair,Procedure,Schedule],
     synchronize: true,
     logging: true,
     logger: 'advanced-console',

@@ -47,7 +47,7 @@ export class AffairService {
 
     // Update an existing Affair by its ID
     async updateAffair(id: number, affairData: Partial<Affair>): Promise<Affair | undefined | null> {
-        const { title, ...updateData } = affairData;  // Separate related entities from other data
+        const updateData = { ...affairData }; // Separate related entities from other data
         await this.repository.update(id, updateData);
         return this.getAffairById(id);  // Return the updated Affair with relations
     }
