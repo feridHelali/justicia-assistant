@@ -1,6 +1,5 @@
 export interface affairProps {
-    affairId?: number;
-    affairNumber: number | string;
-    title: string;
-    claimant: string;
+    affair: any;
+    onEdit: (affair: any) => void;
+    onDelete: (id: number) => void;
 }
