@@ -33,5 +33,12 @@ export const labels = {
 
     claimant: "المدعي",
     id:"الاسم",
-    label:"الاسم"
+    label:"الاسم",
+    settings: "الاعدادات",
+    scheduler: "جدول المواعيد",
+    users: "المستخدمين",
+    courts: "المحاكم",
+    matier: "المواد",
+    courtPhase: "مراحل المحاكم",
+    quit: "تسجيل الخروج",
 };

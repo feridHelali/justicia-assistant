@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, VStack, Link, StepSeparator } from '@chakra-ui/react';
+import { Box, VStack, Link,Text } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import { labels } from '../arabic.labels';
 import { FaHome, FaBriefcase, FaFileContract, FaPlusSquare } from 'react-icons/fa';
@@ -18,6 +18,31 @@ const SideNav: React.FC = () => {
                     <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.addAffair}
                 </Link>
                 <hr/>
+                <Link as={RouterLink} to="/scheduler" display={"flex"} alignItems={"flex-start"}>
+                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.scheduler}
+                </Link>
+                <hr/>
+                <Text  display={"flex"} alignItems={"flex-start"}>   
+                    {labels.settings}
+                </Text>
+                
+                <Link as={RouterLink} to="/users" display={"flex"} alignItems={"flex-start"}>
+                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.users}
+                </Link>
+                
+                <Link as={RouterLink} to="/courts" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courts}
+                </Link>
+                <Link as={RouterLink} to="//court-matier" display={"flex"} alignItems={"flex-start"}>
+                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.matier}
+                </Link>
+                <Link as={RouterLink} to="/court-phase" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courtPhase}
+                </Link>
+                <hr/>
+                <Link as={RouterLink} to="/exit" display={"flex"} alignItems={"flex-start"}>
+                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.quit}
+                </Link>
 
             </VStack>
         </Box>
