@@ -33,7 +33,7 @@ const SideNav: React.FC = () => {
                 <Link as={RouterLink} to="/courts" display={"flex"} alignItems={"flex-start"}>
                     <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courts}
                 </Link>
-                <Link as={RouterLink} to="//court-matier" display={"flex"} alignItems={"flex-start"}>
+                <Link as={RouterLink} to="/court-matier" display={"flex"} alignItems={"flex-start"}>
                     <FaFileContract style={{ marginLeft: '10px' }} /> {labels.matier}
                 </Link>
                 <Link as={RouterLink} to="/court-phase" display={"flex"} alignItems={"flex-start"}>
