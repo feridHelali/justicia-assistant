@@ -8,6 +8,11 @@ interface ElectronAPI {
     createAffair: (affair: any) => Promise<any>;
     updateAffair: (affair: any) => Promise<any>;
     deleteAffair: (id: number) => Promise<any>;
+    fetchArticles: () => Promise<any>;
+    fetchArticleById: (id: string) => Promise<any>;
+    createArticle: (article: any) => Promise<any>;
+    updateArticle: (article: any) => Promise<any>;
+    deleteArticle: (id: number) => Promise<any>;
 }
 export type MockElectronAPI = {
     fetchAffairs: jest.Mock<Promise<any>, any[]>;
@@ -15,6 +20,11 @@ export type MockElectronAPI = {
     createAffair: jest.Mock<Promise<any>, [any]>;
     updateAffair: jest.Mock<Promise<any>, [any]>;
     deleteAffair: jest.Mock<Promise<any>, [number]>
+    fetchArticles: jest.Mock<Promise<any>, any[]>;
+    fetchArticleById: jest.Mock<Promise<any>, [number]>;
+    createArticle: jest.Mock<Promise<any>, [any]>;
+    updateArticle: jest.Mock<Promise<any>, [any]>;
+    deleteArticle: jest.Mock<Promise<any>, [number]>
 };
 
 

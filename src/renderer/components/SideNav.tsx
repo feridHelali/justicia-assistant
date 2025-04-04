@@ -27,17 +27,22 @@ const SideNav: React.FC = () => {
                 </Text>
                 
                 <Link as={RouterLink} to="/users" display={"flex"} alignItems={"flex-start"}>
-                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.users}
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.users}
                 </Link>
                 
                 <Link as={RouterLink} to="/courts" display={"flex"} alignItems={"flex-start"}>
                     <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courts}
                 </Link>
-                <Link as={RouterLink} to="/court-matier" display={"flex"} alignItems={"flex-start"}>
-                    <FaFileContract style={{ marginLeft: '10px' }} /> {labels.matier}
+                <hr/>
+                <Link as={RouterLink} to="/articles" display={"flex"} alignItems={"flex-start"}>
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.article}
                 </Link>
+                <Link as={RouterLink} to="/article-form" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.create}
+                </Link>
+                <hr/>
                 <Link as={RouterLink} to="/court-phase" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courtPhase}
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.caseStage}
                 </Link>
                 <hr/>
                 <Link as={RouterLink} to="/exit" display={"flex"} alignItems={"flex-start"}>

@@ -5,6 +5,7 @@ import initializeDatabase from './db/initializeDatabase';
 
 import installExtension, { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { AffairService } from './services/AffairService';
+import { ArticleService } from './services/ArticleService';
 
 
 
@@ -50,6 +51,7 @@ app.on('ready', async () => {
         await initializeDatabase();
 
         const affairService = new AffairService();
+        const articleService = new ArticleService();
 
 
         // Register IPC handlers only after the data source is initialized
@@ -74,6 +76,27 @@ app.on('ready', async () => {
 
         ipcMain.handle('delete-affair', async (event, id) => {
             await affairService.deleteAffair(id);
+            return id;
+        });
+
+        ipcMain.handle('fetch-articles', async () => {
+            return await articleService.getAllArticles();
+        });
+
+        ipcMain.handle('fetch-article-by-id', async (event, id) => {
+            return await articleService.getArticleById(id);
+        });
+
+        ipcMain.handle('create-article', async (event, article) => {
+            return await articleService.createArticle(article);
+        });
+
+        ipcMain.handle('update-article', async (event, article) => {
+            return await articleService.updateArticle(article.articleId, article);
+        });
+
+        ipcMain.handle('delete-article', async (event, id) => {
+            await articleService.deleteArticle(id);
             return id;
         });
 

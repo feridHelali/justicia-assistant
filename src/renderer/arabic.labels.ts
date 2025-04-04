@@ -38,7 +38,7 @@ export const labels = {
     scheduler: "جدول المواعيد",
     users: "المستخدمين",
     courts: "المحاكم",
-    matier: "المواد",
-    courtPhase: "مراحل المحاكم",
+    article: "المادّة",
+    caseStage: "طور القضية",
     quit: "تسجيل الخروج",
 };
