@@ -46,7 +46,7 @@ const ArticleForm: React.FC = () => {
     useEffect(() => {
         if (currentArticle && mode === 'update') {
             setNewArticle({
-                ...currentArticle,
+                ...currentArticle
             })
         }
     }, [currentArticle, mode]);
@@ -60,7 +60,6 @@ const ArticleForm: React.FC = () => {
   
     const handleCreate = () => {
         const articleDTO = {
-            articleId: newArticle.articleId,
             label: newArticle.label,
         }
 
@@ -73,10 +72,7 @@ const ArticleForm: React.FC = () => {
 
     const handleUpdate = () => {
         if (currentArticle && isArticleValid(newArticle)) {
-            const updatedArticleDTO = {
-                articleId: currentArticle.articleId,
-            };
-            dispatch(updateArticle(updatedArticleDTO))
+            dispatch(updateArticle(newArticle))
                 .then(() => navigate('/articles'));
         }
     };
@@ -102,6 +98,7 @@ const ArticleForm: React.FC = () => {
                     {mode === 'update' ? labels.update : labels.save}
                 </Button>
             </HStack>
+            <pre><code>{JSON.stringify(currentArticle)}</code></pre>
         </Box>
     );
 };

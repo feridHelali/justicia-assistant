@@ -92,7 +92,7 @@ app.on('ready', async () => {
         });
 
         ipcMain.handle('update-article', async (event, article) => {
-            return await articleService.updateArticle(article.articleId, article);
+            return await articleService.updateArticle(article.id, article);
         });
 
         ipcMain.handle('delete-article', async (event, id) => {

@@ -43,6 +43,7 @@ export class ArticleService {
     // Update an existing Article by its ID
     async updateArticle(id: number, articleData: Partial<Article>): Promise<Article | undefined | null> {
         const updateData = { ...articleData }; // Separate related entities from other data
+        console.log('article Payload to update Articles:', updateData); 
         await this.repository.update(id, updateData);
         return this.getArticleById(id);  // Return the updated Article 
     }
