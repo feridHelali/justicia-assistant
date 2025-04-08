@@ -38,7 +38,7 @@ const SideNav: React.FC = () => {
                     <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.article}
                 </Link>
                 <Link as={RouterLink} to="/article-form" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.create}
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.createArticle}
                 </Link>
                 <hr/>
                 <Link as={RouterLink} to="/court-phase" display={"flex"} alignItems={"flex-start"}>

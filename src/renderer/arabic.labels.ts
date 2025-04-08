@@ -1,3 +1,4 @@
+import { createArticle } from "./redux/article/articleSlice";
 
 
 export const labels = {
@@ -32,13 +33,14 @@ export const labels = {
     affairDepartment: "القضية المرفوعة",
 
     claimant: "المدعي",
-    id:"الاسم",
+    id:"المعرّف",
     label:"الاسم",
     settings: "الاعدادات",
     scheduler: "جدول المواعيد",
     users: "المستخدمين",
     courts: "المحاكم",
     article: "المادّة",
+    createArticle: "اضافة مادة",
     caseStage: "طور القضية",
     quit: "تسجيل الخروج",
 };

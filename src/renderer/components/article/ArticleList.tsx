@@ -51,11 +51,13 @@ const ArticleList: React.FC = () => {
                     <Tr>
                         <Th>{labels.id}</Th>
                         <Th>{labels.article}</Th>
+                        <Th>{labels.action}</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
                     {articles.map((article:{id:number,label:string}) => (
                         <Tr key={article.id}>
+                            <Td>{article.id}</Td>
                             <Td>{article.label}</Td>
                             <Td>
                                 <HStack spacing={4}>
