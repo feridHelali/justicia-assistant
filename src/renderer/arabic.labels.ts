@@ -1,3 +1,4 @@
+import { create } from "domain";
 import { createArticle } from "./redux/article/articleSlice";
 
 
@@ -43,4 +44,15 @@ export const labels = {
     createArticle: "اضافة مادة",
     caseStage: "طور القضية",
     quit: "تسجيل الخروج",
+
+    createUser: "اضافة مستخدم",
+    usersList: "قائمة المستخدمين",
+
+    createCourt: "اضافة محكمة", 
+    courtList: "قائمة المحاكم",
+
+    createCaseStage: "اضافة طور قضية",
+    caseStageList: "قائمة اطوار القضايا",
+  
+    articleList: "قائمة المواد",
 };

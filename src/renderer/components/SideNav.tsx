@@ -27,22 +27,31 @@ const SideNav: React.FC = () => {
                 </Text>
                 
                 <Link as={RouterLink} to="/users" display={"flex"} alignItems={"flex-start"}>
-                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.users}
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.usersList}
                 </Link>
-                
+                <Link as={RouterLink} to="/user-form" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.createUser}
+                </Link>
+                <hr/>
                 <Link as={RouterLink} to="/courts" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.courts}
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.courtList}
+                </Link>
+                <Link as={RouterLink} to="/court-form" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.createCourt}
                 </Link>
                 <hr/>
                 <Link as={RouterLink} to="/articles" display={"flex"} alignItems={"flex-start"}>
-                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.article}
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.articleList}
                 </Link>
                 <Link as={RouterLink} to="/article-form" display={"flex"} alignItems={"flex-start"}>
                     <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.createArticle}
                 </Link>
                 <hr/>
-                <Link as={RouterLink} to="/court-phase" display={"flex"} alignItems={"flex-start"}>
-                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.caseStage}
+                <Link as={RouterLink} to="/case-stage" display={"flex"} alignItems={"flex-start"}>
+                    <FaBriefcase style={{ marginLeft: '10px' }} /> {labels.caseStageList}
+                </Link>
+                <Link as={RouterLink} to="/case-stage-form" display={"flex"} alignItems={"flex-start"}>
+                    <FaPlusSquare style={{ marginLeft: '10px' }} /> {labels.createCaseStage}
                 </Link>
                 <hr/>
                 <Link as={RouterLink} to="/exit" display={"flex"} alignItems={"flex-start"}>
